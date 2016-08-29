@@ -39,3 +39,17 @@ insert into Orders (OrderNo, P_Id) values(
 	34764,15
 );
 select * from Orders;
+/*Write a query to return rows where there is at least one match in both tables?*/
+select * from Persons inner join orders where Persons.P_Id = Orders.P_Id;
+/*Write a query to list all the persons and their orders - if any?*/
+select Persons.FirstName, Persons.LastName, Orders.OrderNo from Persons left join Orders on Persons.P_Id = Orders.P_Id ;
+/*Write a query to list all the orders with containing persons - if any?*/
+select Orders.OrderNo, Persons.FirstName, Persons.LastName from Persons right join Orders on Persons.P_Id = Orders.P_Id;
+/*Write a query to list all the persons and their orders, and all the orders with their persons?*/
+select Persons.FirstName, Persons.LastName, Orders.OrderNo from Persons left join Orders on Persons.P_Id = Orders.P_Id union select Orders.OrderNo, Persons.FirstName, Persons.LastName from Persons right join Orders on Persons.P_Id = Orders.P_Id;
+/*Write a query to convert the "LastName" column to uppercase?*/
+update Persons set LastName = upper(LastName);
+/*Write a query to select the content of the "LastName" and "FirstName" columns and
+convert the "LastName" column to lowercase?*/
+select lower(LastName), FirstName from Persons;
+/*Write a query to extract the first four characters of the "City" column?*/
